@@ -102,3 +102,57 @@ SELECT
   (SELECT COUNT(*) FROM Movies) AS movie_count,
   (SELECT COUNT(DISTINCT genre) FROM Movies) AS genre_count,
   (SELECT STRING_AGG(title, ', ') FROM Movies) AS titles;
+
+
+
+--Part 4: Additional queries
+
+--Query 1: Find members who have rented more than 1 movie
+SELECT m.name, COUNT(r.rental_id) AS movies_rented
+FROM Members m
+JOIN Rentals r ON m.member_id = r.member_id
+GROUP BY m.name
+HAVING COUNT(r.rental_id) > 1
+ORDER BY movies_rented;
+
+--Query 2: List members who rented a specific movie
+SELECT mem.name, mem.email, r.rental_date, r.return_date
+FROM Rentals r
+JOIN Members mem ON r.member_id = mem.member_id
+JOIN Movies m ON r.movie_id = m.movie_id
+WHERE m.title = 'Oppenheimer';
+
+--Query 3: Count how many movies are available in each language
+SELECT language, COUNT(movie_id) AS available_movies
+FROM Movies
+WHERE available = TRUE
+GROUP BY language
+ORDER BY available_movies DESC;
+
+--Query 4:List all movies that are currently rented
+SELECT title, director, language, genre
+FROM Movies m
+JOIN Rentals r ON m.movie_id = r.movie_id
+WHERE r.return_date IS NULL;
+
+--Query 5:List all rentals that are overdue
+SELECT mem.name, m.title, r.rental_date
+FROM Rentals r
+JOIN Members mem ON r.member_id = mem.member_id
+JOIN Movies m ON r.movie_id = m.movie_id
+WHERE r.return_date IS NULL AND r.rental_date < '2025-10-25';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
