@@ -180,13 +180,7 @@ VALUES
     (9, 2, 3, 'It was okay.');
 
 
-SELECT m.title,
-  AVG(r.rating) AS avg_rating,
-  COUNT(r.review_id) AS num_reviews
-FROM Movies m
-LEFT JOIN Reviews r
-  ON m.movie_id = r.movie_id
-GROUP BY m.title;
+
 
 
 
