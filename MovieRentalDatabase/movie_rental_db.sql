@@ -94,3 +94,11 @@ VALUES
 (1, 9, '2025-10-15', NULL),
 (2, 2, '2025-10-16', '2025-10-22'),
 (6,4 , '2025-10-18', NULL);
+
+
+
+--Part 3: Data Uniqueness Proof
+SELECT
+  (SELECT COUNT(*) FROM Movies) AS movie_count,
+  (SELECT COUNT(DISTINCT genre) FROM Movies) AS genre_count,
+  (SELECT STRING_AGG(title, ', ') FROM Movies) AS titles;
