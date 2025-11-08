@@ -144,6 +144,51 @@ WHERE r.return_date IS NULL AND r.rental_date < '2025-10-25';
 
 
 
+--Expanding the system 
+
+--Table 4: Reviews
+
+CREATE TABLE Reviews(
+    review_id SERIAL PRIMARY KEY,
+    movie_id INTEGER,
+    member_id INTEGER,
+    rating INTEGER NOT NULL CHECK ( rating >= 1 AND rating <=5),
+    review_text TEXT,
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (movie_id) REFERENCES Movies(movie_id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES Members(member_id) ON DELETE CASCADE
+    -- UNIQUE(movie_id, member_id)
+)
+
+SELECT * FROM reviews;
+DROP TABLE Reviews;
+
+INSERT INTO Reviews
+  (movie_id, member_id, rating, review_text)
+VALUES
+    (1, 1, 5, 'Amazing film!'),
+    (2, 3, 4, 'Great story.'),
+    (8, 1, 3, 'Great story.'),
+    (1, 4, 5, 'Amazing film!'),
+    (3, 1, 4, 'Great story.'),
+    (2, 4, 3, 'Great story.'),
+    (5, 2, 3, 'It was okay.');
+    (5, 1, 5, 'Amazing film!'),
+    (6, 1, 4, 'Great story.'),
+    (7, 1, 3, 'Great story.'),
+    (4, 2, 3, 'It was okay.');
+    (9, 2, 3, 'It was okay.');
+
+
+SELECT m.title,
+  AVG(r.rating) AS avg_rating,
+  COUNT(r.review_id) AS num_reviews
+FROM Movies m
+LEFT JOIN Reviews r
+  ON m.movie_id = r.movie_id
+GROUP BY m.title;
+
+
 
 
 
