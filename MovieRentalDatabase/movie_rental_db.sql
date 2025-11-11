@@ -144,9 +144,14 @@ WHERE r.return_date IS NULL AND r.rental_date < '2025-10-25';
 
 
 
---Expanding the system 
+--Extend the system
+--Consider:
+    --Different user access levels
+    --Rating validation (1-5 stars)
+    --Inventory tracking accuracy
+    --Query performance
 
---Table 4: Reviews
+--Implementation: Reviews Table (Adding Customer Feedback)
 
 CREATE TABLE Reviews(
     review_id SERIAL PRIMARY KEY,
@@ -157,7 +162,7 @@ CREATE TABLE Reviews(
     review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (movie_id) REFERENCES Movies(movie_id) ON DELETE CASCADE,
     FOREIGN KEY (member_id) REFERENCES Members(member_id) ON DELETE CASCADE
-    -- UNIQUE(movie_id, member_id)
+    UNIQUE(movie_id, member_id)
 )
 
 SELECT * FROM reviews;
@@ -188,6 +193,18 @@ LEFT JOIN Reviews r
   ON m.movie_id = r.movie_id
 GROUP BY m.title;
 
+
+-- Implementation: Employees Table (Tracking Staff Who Process Rentals)
+CREATE TABLE Employees (
+  employee_id SERIAL PRIMARY KEY,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  phone VARCHAR(20),
+  role VARCHAR(20) CHECK (role IN ('clerk', 'manager', 'admin')),
+  hire_date DATE DEFAULT CURRENT_DATE,
+  active BOOLEAN DEFAULT TRUE
+);
 
 
 
