@@ -212,7 +212,16 @@ ALTER TABLE Rentals
 ADD COLUMN processed_by INTEGER,
 ADD FOREIGN KEY (processed_by) REFERENCES Employees(employee_id);
 
-
+-- Employee performance metrics
+SELECT
+  e.first_name || ' ' || e.last_name AS employee,
+  COUNT(r.rental_id) AS rentals_processed
+FROM Employees e
+LEFT JOIN Rentals r
+  ON e.employee_id = r.processed_by
+WHERE e.active = TRUE
+GROUP BY e.employee_id
+ORDER BY rentals_processed DESC;
 
 
 
