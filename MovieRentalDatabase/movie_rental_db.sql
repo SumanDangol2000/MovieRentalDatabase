@@ -194,6 +194,7 @@ LEFT JOIN Reviews r
 GROUP BY m.title;
 
 
+
 -- Implementation: Employees Table (Tracking Staff Who Process Rentals)
 CREATE TABLE Employees (
   employee_id SERIAL PRIMARY KEY,
@@ -206,7 +207,10 @@ CREATE TABLE Employees (
   active BOOLEAN DEFAULT TRUE
 );
 
-
+-- Update Rentals table to track employee
+ALTER TABLE Rentals
+ADD COLUMN processed_by INTEGER,
+ADD FOREIGN KEY (processed_by) REFERENCES Employees(employee_id);
 
 
 
