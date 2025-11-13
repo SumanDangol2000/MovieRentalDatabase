@@ -224,7 +224,16 @@ GROUP BY e.employee_id
 ORDER BY rentals_processed DESC;
 
 
-
+--Implementation: Inventories Table (Supporting Multiple Physical Copies of Each Movie)
+CREATE TABLE Inventories (
+  copy_id SERIAL PRIMARY KEY,
+  movie_id INTEGER NOT NULL,
+  barcode VARCHAR(50) UNIQUE NOT NULL,
+  condition VARCHAR(20) CHECK (condition IN ('new', 'good', 'fair', 'damaged')),
+  acquisition_date DATE DEFAULT CURRENT_DATE,
+  available BOOLEAN DEFAULT TRUE,
+  FOREIGN KEY (movie_id) REFERENCES Movies(movie_id) ON DELETE CASCADE
+);
 
 
 
