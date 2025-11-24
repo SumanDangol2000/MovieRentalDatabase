@@ -5,9 +5,9 @@
 **Favorite Number:** 7
 
 ## My Data Record
-student_id: S002
-studentName: Suman
-favoriteNumber: 7
+**student_id:** S002
+**studentName:** Suman
+**favoriteNumber:** 7
 randomParagraph: Mountains rise majestically against the horizon inspiring travelers to explore their silent strength.
 
 ## Part 1: Word Extraction Queries
