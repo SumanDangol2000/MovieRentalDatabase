@@ -177,3 +177,5 @@ COUNT(σ(favoriteNumber ≥ -3) AND (favoriteNumber ≤ 17)(StudentData))
 
 - **Result:**  
 Number of students whose favoriteNumber lies between −3 and 17.
+
+
