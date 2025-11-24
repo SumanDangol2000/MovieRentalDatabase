@@ -160,9 +160,9 @@ Only IDs and names of students whose favoriteNumber is even.
 σ(favoriteNumber = 7) AND (studentName ≠ 'Suman')(StudentData)
 
 - **Result:**  
-**student_id:** S100..
-**studentName:** Teresa Griffin..  
-**favoriteNumber:** 7..  
+**student_id:** S100 <br>
+**studentName:** Teresa Griffin <br>
+**favoriteNumber:** 7 <br>
 **randomParagraph:** Nanotechnology manipulates matter at atomic scale creating materials with novel properties.
 
 ---
