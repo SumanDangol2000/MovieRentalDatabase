@@ -81,7 +81,6 @@
 |------------|----------------|----------------|
 | S067       | Peter Howard   | 2              |
 | S081       | Carl Barnes    | 1              |
-| S100       | Teresa Griffin | 7              |
 | …          | …              | …              |
 
 ---
@@ -195,9 +194,9 @@ StudentData − σ20 ≤ favoriteNumber ≤ 80(StudentData)
 |------------|----------------|
 | S008       | Sarah Johnson  |
 | S011       | James Wilson   |
-| S027       | Joseph Harris  |
+| S022       | Elizabeth Perez  |
 | S028       | Jessica Clark  |
-| S036       | Helen Lopez    |
+| S001       | Geethika    |
 
 ---
 
