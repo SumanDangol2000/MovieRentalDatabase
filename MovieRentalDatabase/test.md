@@ -45,12 +45,12 @@
 **Expression:**  
 πWORD(randomParagraph, 7)(σstudentName='Suman'(StudentData))  
 
-**Explanation:** Same as Query 2, but projects the 7th word from the paragraph.  
+**Explanation:** First select Suman’s record, then project the 7th word from `randomParagraph`.  
 
 **Result:**  
 | studentName | 7th Word   |  
 |-------------|------------|  
-| Suman       | inspiring  |
+| Suman       | while  |
 
 ---
 
