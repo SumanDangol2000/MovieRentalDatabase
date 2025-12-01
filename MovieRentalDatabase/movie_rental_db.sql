@@ -248,7 +248,16 @@ VALUES
   (1, 'DVD-002', 'good'),
   (2, 'DVD-003', 'new');
 
-
+-- Available copies per movie
+SELECT
+  m.title,
+  COUNT(i.copy_id) AS total_copies,
+  SUM(CASE WHEN i.available
+    THEN 1 ELSE 0 END) AS available_copies
+FROM Movies m
+LEFT JOIN Inventories i
+  ON m.movie_id = i.movie_id
+GROUP BY m.movie_id, m.title;
 
 
 
