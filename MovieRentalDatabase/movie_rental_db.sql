@@ -235,6 +235,18 @@ CREATE TABLE Inventories (
   FOREIGN KEY (movie_id) REFERENCES Movies(movie_id) ON DELETE CASCADE
 );
 
+-- Update Rentals to track specific copy
+ALTER TABLE Rentals
+ADD COLUMN copy_id INTEGER,
+ADD FOREIGN KEY (copy_id) REFERENCES Inventories(copy_id);
+
+
+INSERT INTO Inventories
+  (movie_id, barcode, condition)
+VALUES
+  (1, 'DVD-001', 'new'),
+  (1, 'DVD-002', 'good'),
+  (2, 'DVD-003', 'new');
 
 
 
