@@ -268,3 +268,9 @@ ALTER TABLE Rentals
 ADD COLUMN due_date DATE,
 ADD COLUMN late_fee NUMERIC(6,2) DEFAULT 0.00;
 
+-- Calculate late fees (e.g., $2/day)
+UPDATE Rentals
+SET late_fee =
+  GREATEST(0, CURRENT_DATE - due_date) * 2.00
+WHERE return_date IS NULL
+  AND due_date < CURRENT_DATE;
