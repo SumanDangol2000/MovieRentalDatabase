@@ -259,5 +259,12 @@ LEFT JOIN Inventories i
   ON m.movie_id = i.movie_id
 GROUP BY m.movie_id, m.title;
 
+--Late Fees System
+--Tracking and Calculating Overdue Charges
+--Business Scenario:Members must return movies by a due date. If they return late (or don't return at all), we need to calculate and charge late fees automatically.
 
+-- Add late fee tracking to existing Rentals table
+ALTER TABLE Rentals
+ADD COLUMN due_date DATE,
+ADD COLUMN late_fee NUMERIC(6,2) DEFAULT 0.00;
 
